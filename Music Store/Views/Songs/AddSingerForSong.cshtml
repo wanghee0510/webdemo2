@@ -1,0 +1,53 @@
+﻿@model Music_Store.Models.AddSingerViewModel
+@{
+    ViewData["Title"] = "AddSingerForSong";
+}
+
+
+<h1><label>Singer of @Model.Song.SongName</label></h1>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Songs" asp-action="AddSingerForSong" data-ajax="true" data-ajax-method="POST" data-ajax-success="onSuccess" data-ajax-failure="onFailed">
+        <table class="table">
+            <thead>
+            
+                    <tr>
+                        <th>
+                            <select name="SingerID">
+                                @foreach (var item in Model.SingerToAdd)
+                                {
+                                    <option value="@item.SingerID">@item.SingerName</option>
+                                }
+                            </select>
+
+                        </th>
+                        <th>
+                            <input type="hidden" name="SongID" value="@Model.Song.SongID" />
+                            <input type="submit" class="btn btn-success" value="AddItem">
+                        </th>
+                    </tr>
+            
+            </thead>
+            <tbody>
+                @foreach (var item in Model.SingerInSong)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SingerName)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+    <script>
+        var onSuccess = function (data) {
+            alert(data.abc);
+            window.location.reload(true);
+        }
+        var onFailed = function (data) {
+            alert('error');
+        }
+    </script>
+
