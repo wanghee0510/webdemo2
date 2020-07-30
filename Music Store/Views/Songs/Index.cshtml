@@ -4,34 +4,31 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
- 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SongName)
-            </th>
-            
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SongName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SongID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SongID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SongID">Delete</a> |
-                <a asp-action="AddSingerForSong" asp-route-id="@item.SongID">AddItem</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<h1><b>Âm nhạc của cuộc sống</b></h1>
+
+
+<br />
+<body>
+
+    <div class="row">
+        <table class="table" border="1">
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <div class="col-md-3">
+                        <a href="#">
+                            <img src="http://webcoban.vn/image/flower.gif" />
+                        </a>
+                        <div><b>SongName: </b> @item.SongName</div>
+                        <div><b>Price: @item.Price</b></div>
+                        <div><b>Title: </b>@item.Titel</div>
+                    </div>
+                }
+            </tbody>
+
+        </table>
+
+
+    </div>
+</body>

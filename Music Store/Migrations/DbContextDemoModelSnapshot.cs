@@ -18,22 +18,6 @@ namespace Music_Store.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Music_Store.Models.Album", b =>
-                {
-                    b.Property<int>("AlbumID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("NameAlbum")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("AlbumID");
-
-                    b.ToTable("Albums");
-                });
-
             modelBuilder.Entity("Music_Store.Models.Singer", b =>
                 {
                     b.Property<int>("SingerID")
@@ -75,16 +59,17 @@ namespace Music_Store.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AlbumID")
+                    b.Property<int>("Price")
                         .HasColumnType("int");
 
                     b.Property<string>("SongName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("SongID");
+                    b.Property<string>("Titel")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("AlbumID");
+                    b.HasKey("SongID");
 
                     b.ToTable("Songs");
                 });
@@ -100,15 +85,6 @@ namespace Music_Store.Migrations
                     b.HasOne("Music_Store.Models.Song", "Song")
                         .WithMany("singerSongs")
                         .HasForeignKey("SongID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Music_Store.Models.Song", b =>
-                {
-                    b.HasOne("Music_Store.Models.Album", "Album")
-                        .WithMany("Songs")
-                        .HasForeignKey("AlbumID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
