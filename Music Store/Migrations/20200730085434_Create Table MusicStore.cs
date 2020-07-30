@@ -7,6 +7,21 @@ namespace Music_Store.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Pics",
+                columns: table => new
+                {
+                    PicId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    PicName = table.Column<string>(nullable: false),
+                    GiaTien = table.Column<int>(nullable: false),
+                    TieuDe = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pics", x => x.PicId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Singers",
                 columns: table => new
                 {
@@ -65,6 +80,9 @@ namespace Music_Store.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Pics");
+
             migrationBuilder.DropTable(
                 name: "SingerSongs");
 

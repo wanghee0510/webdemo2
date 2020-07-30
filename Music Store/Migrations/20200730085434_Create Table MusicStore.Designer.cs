@@ -9,7 +9,7 @@ using Music_Store.Models;
 namespace Music_Store.Migrations
 {
     [DbContext(typeof(DbContextDemo))]
-    [Migration("20200722062526_Create Table MusicStore")]
+    [Migration("20200730085434_Create Table MusicStore")]
     partial class CreateTableMusicStore
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -19,6 +19,29 @@ namespace Music_Store.Migrations
                 .HasAnnotation("ProductVersion", "3.1.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Music_Store.Models.Pic", b =>
+                {
+                    b.Property<int>("PicId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("GiaTien")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PicName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TieuDe")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PicId");
+
+                    b.ToTable("Pics");
+                });
 
             modelBuilder.Entity("Music_Store.Models.Singer", b =>
                 {

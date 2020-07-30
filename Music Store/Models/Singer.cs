@@ -13,6 +13,7 @@ namespace Music_Store.Models
         [Required]
         public string SingerName { get; set; }
         public string BirthDay { get; set; }
+
         public List<SingerSong> singerSongs { get; set; }
     }
 }

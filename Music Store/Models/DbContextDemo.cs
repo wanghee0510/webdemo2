@@ -18,7 +18,7 @@ namespace Music_Store.Models
         public DbSet<Song> Songs { get; set; }
         public DbSet<Singer> Singers { get; set; }
         public DbSet<SingerSong> SingerSongs { get; set; }
-        
+        public DbSet<Pic> Pics { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

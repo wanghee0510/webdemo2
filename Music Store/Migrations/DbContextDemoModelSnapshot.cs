@@ -18,20 +18,27 @@ namespace Music_Store.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Music_Store.Models.Album", b =>
+            modelBuilder.Entity("Music_Store.Models.Pic", b =>
                 {
-                    b.Property<int>("AlbumID")
+                    b.Property<int>("PicId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("NameAlbum")
+                    b.Property<int>("GiaTien")
+                        .HasColumnType("int");
+
+                    b.Property<string>("PicName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AlbumID");
+                    b.Property<string>("TieuDe")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.ToTable("Albums");
+                    b.HasKey("PicId");
+
+                    b.ToTable("Pics");
                 });
 
             modelBuilder.Entity("Music_Store.Models.Singer", b =>
@@ -75,16 +82,11 @@ namespace Music_Store.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AlbumID")
-                        .HasColumnType("int");
-
                     b.Property<string>("SongName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SongID");
-
-                    b.HasIndex("AlbumID");
 
                     b.ToTable("Songs");
                 });
@@ -100,15 +102,6 @@ namespace Music_Store.Migrations
                     b.HasOne("Music_Store.Models.Song", "Song")
                         .WithMany("singerSongs")
                         .HasForeignKey("SongID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Music_Store.Models.Song", b =>
-                {
-                    b.HasOne("Music_Store.Models.Album", "Album")
-                        .WithMany("Songs")
-                        .HasForeignKey("AlbumID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

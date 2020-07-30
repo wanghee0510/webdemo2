@@ -9,8 +9,9 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table" style="border-collapse: collapse; border: 1px solid black;" >
+    <thead style="background-color:Blue;">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.SongName)
@@ -20,18 +21,18 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
+        @foreach (var item in Model) {
+            <tr>
+                <td>
                 @Html.DisplayFor(modelItem => item.SongName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SongID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SongID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SongID">Delete</a> |
-                <a asp-action="AddSingerForSong" asp-route-id="@item.SongID">AddItem</a>
-            </td>
-        </tr>
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SongID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SongID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SongID">Delete</a> |
+                    <a asp-action="AddSingerForSong" asp-route-id="@item.SongID">AddItem</a>
+                </td>
+            </tr>
 }
     </tbody>
 </table>

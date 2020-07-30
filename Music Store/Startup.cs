@@ -26,7 +26,7 @@ namespace Music_Store
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddDbContext<DbContextDemo>(options => options.UseSqlServer("data source=DESKTOP-RSNVJDQ;initial catalog=MusicStore;persist security info=True;user id=sa;password=123;MultipleActiveResultSets=True;App=EntityFramework"));
+            services.AddDbContext<DbContextDemo>(options => options.UseSqlServer("Data Source=DESKTOP-5KLAF40\\SQL2019;Initial Catalog=MusicStores1;User ID=Main;password=123;MultipleActiveResultSets=True;App=EntityFramework"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
