@@ -2,7 +2,7 @@
 
 namespace Music_Store.Migrations
 {
-    public partial class CreateTableMusicStore : Migration
+    public partial class CreateTableList : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,7 +26,9 @@ namespace Music_Store.Migrations
                 {
                     SongID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    SongName = table.Column<string>(nullable: false)
+                    SongName = table.Column<string>(nullable: false),
+                    Price = table.Column<int>(nullable: false),
+                    Titel = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -11,6 +11,8 @@ namespace Music_Store.Models
         public int SongID { get; set; }
         
         public string SongName { get; set; }
+        public int Price { get; set; }
+        public string Titel { get; set; }
         public List<SingerSong> singerSongs { get; set; }
         
        

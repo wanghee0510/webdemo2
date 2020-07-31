@@ -9,8 +9,8 @@ using Music_Store.Models;
 namespace Music_Store.Migrations
 {
     [DbContext(typeof(DbContextDemo))]
-    [Migration("20200722062526_Create Table MusicStore")]
-    partial class CreateTableMusicStore
+    [Migration("20200730110510_Create Table List")]
+    partial class CreateTableList
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -61,8 +61,14 @@ namespace Music_Store.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
                     b.Property<string>("SongName")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titel")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SongID");
