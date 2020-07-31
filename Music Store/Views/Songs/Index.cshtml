@@ -3,32 +3,39 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1><b>Âm nhạc của cuộc sống</b></h1>
-
-
+    
+<h1><b class="text-center">Âm nhạc của cuộc sống</b></h1>
 <br />
 <body>
-
+    
     <div class="row">
         <table class="table" border="1">
             <tbody>
                 @foreach (var item in Model)
                 {
-
-                    <div class="col-md-3">
+                    <div class="card card-product">
                         <a href="#">
                             <img src="http://webcoban.vn/image/flower.gif" />
                         </a>
                         <div><b>SongName: </b> @item.SongName</div>
                         <div><b>Price: @item.Price</b></div>
                         <div><b>Title: </b>@item.Titel</div>
+                        <div class="text-center">
+                            <a href="#" class="btn btn-primary btn-sm "> Order </a>
+                        </div>
                     </div>
+                    
                 }
             </tbody>
-
         </table>
-
-
     </div>
 </body>
+<style>
+    .card-product{
+        border-width:3px;
+        margin-right: 30px;
+        text-align: center;
+        left: 7%;
+    }
+</style>
+
